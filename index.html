@@ -1,179 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <title>Portfolio | Visionnaire</title>
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="script.js">
+
   <style>
+    :root {
+      --primary-neon: #00f2ff;
+      --secondary-neon: #7000ff;
+      --dark-bg: #050505;
+      --glass: rgba(255, 255, 255, 0.03);
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+    }
+
+    /* --- BACKGROUND CANVAS --- */
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle at center, #111 0%, #000 100%);
+    }
+
+    /* --- NAVIGATION --- */
+    .navbar {
+      background: rgba(0, 0, 0, 0.8) !important;
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 20px 0;
+    }
+
+    .navbar-brand {
+      font-family: 'Syncopate', sans-serif;
+      font-weight: 700;
+      color: var(--primary-neon) !important;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      perspective: 1000px;
+    }
+
+    .hero-content h1 {
+      font-family: 'Syncopate', sans-serif;
+      font-size: clamp(2rem, 8vw, 5rem);
+      font-weight: 700;
+      background: linear-gradient(to right, #fff, var(--primary-neon));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    /* --- GLASS CARD --- */
     #about {
-      background: #f8f9fa;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 60px;
+      margin-top: -100px;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     #about:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      transform: translateY(-10px) rotateX(2deg);
+      border-color: var(--primary-neon);
+      box-shadow: 0 0 40px rgba(0, 242, 255, 0.15);
+    }
+
+    .btn-neon {
+      border: 1px solid var(--primary-neon);
+      color: var(--primary-neon);
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 2px;
+      transition: all 0.3s;
+      background: transparent;
+    }
+
+    .btn-neon:hover {
+      background: var(--primary-neon);
+      color: #000;
+      box-shadow: 0 0 25px var(--primary-neon);
+    }
+
+    .section-title {
+      font-family: 'Syncopate', sans-serif;
+      font-size: 1.2rem;
+      color: var(--secondary-neon);
+      margin-bottom: 40px;
+      display: block;
     }
   </style>
 </head>
 <body>
-  
-  <style>
-    #main-title:hover {
-      transform: scale(1.1);
-    }
-  </style>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+
+  <div id="canvas-container"></div>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">CORE.IX</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#about">À propos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#projects">Projets</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
+          <li class="nav-item"><a class="nav-link px-3 text-white" href="#about">Savoir-faire</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-white" href="#projects">Laboratoire</a></li>
+          <li class="nav-item"><a class="nav-link ms-lg-4 btn-neon" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Particle Animation -->
-  <div id="particles-js"></div>
+  <section class="hero">
+    <div class="hero-content">
+      <h1 id="main-title">BEYOND REALITY</h1>
+      <p class="lead opacity-75">Designer d'interfaces futuristes & Développeur Full-Stack</p>
+    </div>
+  </section>
 
-  <style>
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-  </style>
+  <div class="container mb-5">
+    <section id="about" class="row align-items-center">
+      <div class="col-lg-6">
+        <span class="section-title">// PROFIL</span>
+        <h2 class="display-4 fw-bold mb-4">L'architecture au service de l'émotion.</h2>
+        <p class="lead opacity-50">
+          Je ne construis pas que des sites web, je crée des écosystèmes digitaux 
+          où la performance rencontre l'esthétique pure.
+        </p>
+      </div>
+      <div class="col-lg-6 text-center">
+        <div class="p-5">
+           <i class="bi bi-cpu" style="font-size: 10rem; color: var(--primary-neon); filter: drop-shadow(0 0 20px var(--primary-neon));"></i>
+        </div>
+      </div>
+    </section>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": {
-          "value": 80,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": {
-          "value": "#000000"
-        },
-        "shape": {
-          "type": "circle",
-          "stroke": {
-            "width": 0,
-            "color": "#000000"
-          },
-          "polygon": {
-            "nb_sides": 5
-          },
-          "image": {
-            "src": "img/github.svg",
-            "width": 100,
-            "height": 100
-          }
-        },
-        "opacity": {
-          "value": 0.5,
-          "random": false,
-          "anim": {
-            "enable": false,
-            "speed": 1,
-            "opacity_min": 0.1,
-            "sync": false
-          }
-        },
-        "size": {
-          "value": 3,
-          "random": true,
-          "anim": {
-            "enable": false,
-            "speed": 40,
-            "size_min": 0.1,
-            "sync": false
-          }
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#000000",
-          "opacity": 0.4,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 6,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false,
-          "attract": {
-            "enable": false,
-            "rotateX": 600,
-            "rotateY": 1200
-          }
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "repulse"
-          },
-          "onclick": {
-            "enable": true,
-            "mode": "push"
-          },
-          "resize": true
-        },
-        "modes": {
-          "grab": {
-            "distance": 400,
-            "line_linked": {
-              "opacity": 1
-            }
-          },
-          "bubble": {
-            "distance": 400,
-            "size": 40,
-            "duration": 2,
-            "opacity": 8,
-            "speed": 3
-          },
-          "repulse": {
-            "distance": 200,
-            "duration": 0.4
-          },
-          "push": {
-            "particles_nb": 4
-          },
-          "remove": {
-            "particles_nb": 2
-          }
-        }
-      },
-      "retina_detect": true
+    // Animation de fond 3D simple (Grille)
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+    const geometry = new THREE.PlaneGeometry(100, 100, 50, 50);
+    const material = new THREE.MeshBasicMaterial({ color: 0x7000ff, wireframe: true, transparent: true, opacity: 0.1 });
+    const grid = new THREE.Mesh(geometry, material);
+    grid.rotation.x = -Math.PI / 2;
+    scene.add(grid);
+
+    camera.position.z = 5;
+    camera.position.y = 2;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      grid.position.z += 0.05;
+      if (grid.position.z > 2) grid.position.z = 0;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Redimensionnement
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
     });
   </script>
+</body>
+</html>
